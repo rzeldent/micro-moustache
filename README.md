@@ -1,4 +1,7 @@
 # Micro Moustache
+
+![status badge](https://github.com/rzeldent/micro-moustache/actions/workflows/main.yml/badge.svg?event=push)
+
 Minimal moustache implementation for Arduino and other micro controllers.
 
 ## Introduction
@@ -21,7 +24,7 @@ typedef struct moustache_variable
 } moustache_variable_t;
 ```
 
-Some flexibility like looping is lost but keeps the data structure simple.
+Some features like looping are not possible using this data structure but keeps it simple.
 
 The value is defined as a string. This makes it easy to convert values to string as a lot of conversions are already implemented in the String class.
 
@@ -108,3 +111,6 @@ will render
 ```
 And no taxes paid!
 ```
+
+## Collaboration
+Collaboration is appreciated and bug reports or feature requests are welcome!
