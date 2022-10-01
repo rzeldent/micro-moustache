@@ -7,9 +7,9 @@ jobs:
     strategy:
       matrix:
         pio-env: ["esp32"]
-    strategy:
-      matrix:
-        example: [examples/basic.ino]
+#    strategy:
+#      matrix:
+#        example: [examples/basic.ino]
     steps:
       - uses: actions/checkout@v2
       - name: Set up python
@@ -22,4 +22,4 @@ jobs:
       - name: Install platforms
         run: pio pkg install "esp32"
       - name: Build firmware
-        run: pio ci ${{matrix.example}} -e ${{matrix.pio-env}}
+        run: pio ci "examples/basic.ino" -e ${{matrix.pio-env}}
