@@ -9,7 +9,7 @@
 
 void setup()
 {
-    const char *template =
+    const char *taxes =
         "Hello {{name}}\n"
         "You have just won {{value}} dollars!\n"
         "{{#in_ca}}"
@@ -25,7 +25,7 @@ void setup()
         {"taxed_value", String(10000 - (10000 * 0.4))},
         {"in_ca", String(true)}};
 
-    auto result = moustache_render(template, substitutions);
+    auto result = moustache_render(taxes, substitutions);
     Serial.println(result);
 }
 
