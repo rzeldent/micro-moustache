@@ -1,13 +1,19 @@
 {
     "name": "micro-moustache",
     "version": "1.0.0",
-    "description": "A micro moustache library",
-    "author": "Rene Zeldenthuis",
-    "maintainer": "Rene Zeldenthuis",
-    "sentence": "micro text template processor",
-    "paragraph": "A micro text template processor using the moustache syntax. Features include replacing variables, include section and inverted section.",
-    "category": "text processing",
-    "url": "https://github.com/rzeldent/micro-moustache",
-    "architectures": "*",
-    "includes": "moustache.h"
+    "description": "A micro logic-less text template processor using the moustache syntax. Features include replacing variables, include section and inverted section.",
+    "keywords": "moustache, text, text processor, template, logic-less",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rzeldent/micro-moustache"
+    },
+    "authors": [
+        {
+            "name": "Rene Zeldenthuis",
+            "maintainer": true
+        }
+    ],
+    "license": "MIT",
+    "frameworks": "*",
+    "platforms": "*"
 }
