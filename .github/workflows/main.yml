@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        pio-env: ["esp32dev"]
+        pio-env: ["esp12e", "esp32dev"]
 #    strategy:
 #      matrix:
 #        example: [examples/basic.ino]

@@ -2,14 +2,14 @@
 
 #include <WString.h>
 
-typedef struct
+typedef struct moustache_variable
 {
     const char *key;
-    const String value;
-} template_variable_t;
+    const String &value;
+} moustache_variable_t;
 
 template <typename T, size_t n>
-inline String template_render(const String& format, T (&values)[n])
+inline String moustache_render(const String& format, T (&values)[n])
 {
     auto s = String(format);
     // Conditional sections
