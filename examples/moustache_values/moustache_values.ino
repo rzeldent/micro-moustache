@@ -19,7 +19,7 @@ const moustache_variable_t array2[] = { {"array", "2, two"} };
 const moustache_variable_t *array[]= { array0, array1, array2 };
 
 int number = 0;    // variable to store the number
-moustache_variable_t number_value[] = { { "number", String(number) } };
+const moustache_variable_t number_value[] = { { "number", String(number) } };
 
 double x = 0, y = 0;
 const moustache_variable_t point_value[] = { { "x", String(x) }, { "y", String(y) } };
