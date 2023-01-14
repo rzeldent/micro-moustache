@@ -5,7 +5,7 @@
 typedef struct moustache_variable
 {
     const char *key;
-    String &value;
+    const String &value;
 } moustache_variable_t;
 
 template <typename T, size_t n>
