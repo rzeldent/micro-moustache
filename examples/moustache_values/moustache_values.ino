@@ -62,8 +62,8 @@ void setup() {
   Serial.println(moustache_render(point_display, point_value));
   x = 3;
   y = 4;  
-  point_value[0].value = String(x);
-  point_value[1].value = String(y);
+  //point_value[0].value = String(x);
+  //point_value[1].value = String(y);
   Serial.println(moustache_render(point_display, point_value));
   moustache_value(point_value, 0, y);
   moustache_value(point_value, 1, x);
