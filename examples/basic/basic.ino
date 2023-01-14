@@ -9,8 +9,13 @@
 
 void setup()
 {
+
+    Serial.begin(115200);
+
+    Serial.println("Moustache Example");
+
     const char *taxes =
-        "Hello {{name}}\n"
+        "Hello {{name}}\n" 
         "You have just won {{value}} dollars!\n"
         "{{#in_ca}}"
         "Well, {{taxed_value}} dollars, after taxes.\n"
