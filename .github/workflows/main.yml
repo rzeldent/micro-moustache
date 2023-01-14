@@ -7,7 +7,6 @@ jobs:
     strategy:
       matrix:
         pio-env: ['esp12e', 'esp32dev']
-      matrix:
         example: ['examples/basic/basic.ino', 'moustache_values/moustache_values.ino']
     steps:
       - uses: actions/checkout@v2
