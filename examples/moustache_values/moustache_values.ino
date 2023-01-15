@@ -42,10 +42,9 @@ void setup() {
   Serial.println(moustache_render_array(current_value,array, 3));
   Serial.println(moustache_render(number_display, number_value));
   
-  /**/
   number = 2;
   // This changes the value in the next rendered output.
-  //number_value[0].value = String(number);
+  number_value[0].value = String(number);
   Serial.println(moustache_render(number_display, number_value));
   number = 3;
   // The change can also be made like this:
@@ -62,8 +61,8 @@ void setup() {
   Serial.println(moustache_render(point_display, point_value));
   x = 3;
   y = 4;  
-  //point_value[0].value = String(x);
-  //point_value[1].value = String(y);
+  point_value[0].value = String(x);
+  point_value[1].value = String(y);
   Serial.println(moustache_render(point_display, point_value));
   moustache_value(point_value, 0, y);
   moustache_value(point_value, 1, x);
