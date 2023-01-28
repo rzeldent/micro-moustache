@@ -34,30 +34,30 @@ void setup()
     Serial.println(result);
 
     // Replace variable 'in_ca' at index 3 and render
-    auto result = moustache_render(taxes, substitutions, String(false), 3);
+    auto result = moustache_render(taxes, substitutions, 3, String(false));
     Serial.println(result);
 
     // Replace variable 'name' and render
-    auto result = moustache_render(taxes, substitutions, "John", "name");
+    auto result = moustache_render(taxes, substitutions, "name", "John");
     Serial.println(result);
 
     // Replace variable value and taxed_value in one go. So start index = 1
-    const String replace[] = {
+    const String replace_1[] = {
         String(20000),
         String(20000 - (20000 * 0.4))
     };
 
-    auto result = moustache_render(taxes, substitutions, replace, 1);
+    auto result = moustache_render(taxes, substitutions, 1, replace_1);
     Serial.println(result);
 
     // Replace variable name, value and taxed_value in one go. Start at "name"
-    const String replace[] = {
+    const String replace_name[] = {
         "Mike",
         String(30000),
         String(30000 - (30000 * 0.4))
     };
 
-    auto result = moustache_render(taxes, substitutions, replace, "name");
+    auto result = moustache_render(taxes, substitutions, "name", replace_name);
     Serial.println(result);
 }
 

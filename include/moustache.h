@@ -54,31 +54,31 @@ inline String moustache_render(const String &format, const moustache_variable_t 
 
 // Update one value at index  and render
 template <size_t n>
-inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], String updates, size_t index = 0)
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], size_t index, String update)
 {
 #if DEBUG
     if (new_index >= n)
         return "Index out of range";
 #endif
 
-    values[index] = updates;
+    values[index] = update;
     return moustache_render(format, values);
 }
 
 // Update one value at key and render
 template <size_t n>
-inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], String update, const char *key)
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], const char *key, String update)
 {
     size_t index = 0;
     while (index < n && strcmp(values[index].key, key))
         index++;
 
-    return moustache_render(format, values, update, index);
+    return moustache_render(format, values, index, update);
 }
 
 // Update an array of values starting at start_index and render
 template <size_t n, size_t m>
-inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], String updates[m], size_t start_index = 0)
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], size_t start_index, String updates[m])
 {
 #if DEBUG
     if (start_index + m >= n)
@@ -93,11 +93,11 @@ inline String moustache_render(const String &format, const moustache_variable_t 
 
 // Update an array of values starting at key and render
 template <size_t n, size_t m>
-inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], String updates[m], const char *key)
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], const char *key, String updates[m])
 {
     size_t index = 0;
     while (index < n && strcmp(values[index].key, key))
         index++;
 
-    return moustache_render(format, values, updates, index);
+    return moustache_render(format, values, index, updates);
 }
