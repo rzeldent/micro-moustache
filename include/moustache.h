@@ -5,11 +5,11 @@
 typedef struct moustache_variable
 {
     const char *key;
-    const String &value;
+    String &value;
 } moustache_variable_t;
 
-template <typename T, size_t n>
-inline String moustache_render(const String& format, T (&values)[n])
+template <size_t n>
+inline String moustache_render(const String& format, moustache_variable (&values)[n])
 {
     auto s = String(format);
     // Conditional sections
