@@ -5,13 +5,13 @@
 typedef struct moustache_variable
 {
     const char *key;
-    String &value;
+    String value;
 } moustache_variable_t;
 
 template <size_t n>
-inline String moustache_render(const String& format, moustache_variable (&values)[n])
+inline String moustache_render(const String &format, moustache_variable_t (&values)[n])
 {
-    auto s = String(format);
+    auto result = String(format);
     // Conditional sections
     for (size_t i = 0; i < n; i++)
     {
@@ -24,30 +24,30 @@ inline String moustache_render(const String& format, moustache_variable (&values
         while (true)
         {
             bool inverted = false;
-            auto first = s.indexOf(match_section_begin);
+            auto first = result.indexOf(match_section_begin);
             if (first < 0)
             {
                 inverted = true;
-                first = s.indexOf(match_section_inverted_begin);
+                first = result.indexOf(match_section_inverted_begin);
                 if (first < 0)
                     break;
             }
 
-            auto second = s.indexOf(match_section_end, first + match_section_begin.length());
+            auto second = result.indexOf(match_section_end, first + match_section_begin.length());
             if (second < 0)
                 break;
 
             // Arduino returns 0 and 1 for bool.toString()
             if ((!inverted && (values[i].value == "1")) || (inverted && (values[i].value == "0")))
-                s = s.substring(0, first) + s.substring(first + match_section_begin.length(), second) + s.substring(second + match_section_end.length());
+                result = result.substring(0, first) + result.substring(first + match_section_begin.length(), second) + result.substring(second + match_section_end.length());
             else
-                s = s.substring(0, first) + s.substring(second + match_section_end.length());
+                result = result.substring(0, first) + result.substring(second + match_section_end.length());
         }
     }
 
     // Replace variables {{variable}}
     for (size_t i = 0; i < n; i++)
-        s.replace("{{" + String(values[i].key) + "}}", values[i].value);
+        result.replace("{{" + String(values[i].key) + "}}", values[i].value);
 
-    return s;
+    return result;
 }
