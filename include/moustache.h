@@ -54,7 +54,7 @@ inline String moustache_render(const String &format, const moustache_variable_t 
 
 // Update one value at index  and render
 template <size_t n>
-inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], size_t index, const String &update)
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], size_t index, String &update)
 {
 #if DEBUG
     if (new_index >= n)
@@ -67,7 +67,7 @@ inline String moustache_render(const String &format, const moustache_variable_t 
 
 // Update one value at key and render
 template <size_t n>
-inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], const char *key, const String &update)
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], const char *key, String &update)
 {
     size_t index = 0;
     while (index < n && strcmp(values[index].key, key))
@@ -78,7 +78,7 @@ inline String moustache_render(const String &format, const moustache_variable_t 
 
 // Update an array of values starting at start_index and render
 template <size_t n, size_t m>
-inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], size_t start_index, const String (&updates)[m])
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], size_t start_index, String (&updates)[m])
 {
 #if DEBUG
     if (start_index + m >= n)
@@ -93,7 +93,7 @@ inline String moustache_render(const String &format, const moustache_variable_t 
 
 // Update an array of values starting at key and render
 template <size_t n, size_t m>
-inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], const char *key, const String (&updates)[m])
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], const char *key, String (&updates)[m])
 {
     size_t index = 0;
     while (index < n && strcmp(values[index].key, key))
