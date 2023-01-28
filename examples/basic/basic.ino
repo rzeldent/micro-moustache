@@ -29,16 +29,17 @@ void setup()
         {"taxed_value", String(10000 - (10000 * 0.4))},
         {"in_ca", String(true)}};
 
+    String result;
     // Default rendering
-    auto result = moustache_render(taxes, substitutions);
+    result = moustache_render(taxes, substitutions);
     Serial.println(result);
 
     // Replace variable 'in_ca' at index 3 and render
-    auto result = moustache_render(taxes, substitutions, 3, String(false));
+    result = moustache_render(taxes, substitutions, 3, String(false));
     Serial.println(result);
 
     // Replace variable 'name' and render
-    auto result = moustache_render(taxes, substitutions, "name", "John");
+    result = moustache_render(taxes, substitutions, "name", "John");
     Serial.println(result);
 
     // Replace variable value and taxed_value in one go. So start index = 1
@@ -47,7 +48,7 @@ void setup()
         String(20000 - (20000 * 0.4))
     };
 
-    auto result = moustache_render(taxes, substitutions, 1, replace_1);
+    result = moustache_render(taxes, substitutions, 1, replace_1);
     Serial.println(result);
 
     // Replace variable name, value and taxed_value in one go. Start at "name"
@@ -57,7 +58,7 @@ void setup()
         String(30000 - (30000 * 0.4))
     };
 
-    auto result = moustache_render(taxes, substitutions, "name", replace_name);
+    result = moustache_render(taxes, substitutions, "name", replace_name);
     Serial.println(result);
 }
 
