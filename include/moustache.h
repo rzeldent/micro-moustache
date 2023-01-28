@@ -61,7 +61,7 @@ inline String moustache_render(const String &format, const moustache_variable_t 
         return "Index out of range";
 #endif
 
-    values[index] = update;
+    values[index].value = update;
     return moustache_render(format, values);
 }
 
@@ -86,7 +86,7 @@ inline String moustache_render(const String &format, const moustache_variable_t 
 #endif
 
     for (size_t i = 0; i < m; ++i)
-        values[i + start_index] = updates[i];
+        values[i + start_index].value = updates[i];
 
     return moustache_render(format, values);
 }
