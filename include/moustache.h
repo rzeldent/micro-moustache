@@ -8,8 +8,8 @@ typedef struct moustache_variable
     String value;
 } moustache_variable_t;
 
-template <typename T, size_t n>
-inline String moustache_render(const String& format, T (&values)[n])
+template <size_t n>
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n])
 {
     auto s = String(format);
     // Conditional sections
@@ -50,4 +50,54 @@ inline String moustache_render(const String& format, T (&values)[n])
         s.replace("{{" + String(values[i].key) + "}}", values[i].value);
 
     return s;
+}
+
+// Update one value at index  and render
+template <size_t n>
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], String updates, size_t index = 0)
+{
+#if DEBUG
+    if (new_index >= n)
+        return "Index out of range";
+#endif
+
+    values[index] = updates;
+    return moustache_render(format, values);
+}
+
+// Update one value at key and render
+template <size_t n>
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], String update, const char *key)
+{
+    size_t index = 0;
+    while (index < n && strcmp(values[index].key, key))
+        index++;
+
+    return moustache_render(format, values, update, index);
+}
+
+// Update an array of values starting at start_index and render
+template <size_t n, size_t m>
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], String updates[m], size_t start_index = 0)
+{
+#if DEBUG
+    if (start_index + m >= n)
+        return "More values than original array values";
+#endif
+
+    for (size_t i = 0; i < m; ++i)
+        values[i + start_index] = updates[i];
+
+    return moustache_render(format, values);
+}
+
+// Update an array of values starting at key and render
+template <size_t n, size_t m>
+inline String moustache_render(const String &format, const moustache_variable_t (&values)[n], String updates[m], const char *key)
+{
+    size_t index = 0;
+    while (index < n && strcmp(values[index].key, key))
+        index++;
+
+    return moustache_render(format, values, updates, index);
 }
