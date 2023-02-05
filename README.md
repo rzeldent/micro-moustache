@@ -58,11 +58,8 @@ with variables:
     {"name", "Chris"},
     {"value", String(10000)}
   };
-```
-Using code:
-```
-    auto result = moustache_render(taxes, substitutions);
-    Serial.println(result);
+  auto result = moustache_render(taxes, substitutions);
+  Serial.println(result);
 ```
 will render:
 ```
@@ -88,8 +85,10 @@ with variables:
     {"taxed_value", String(10000 - (10000 * 0.4))},
     {"in_ca", String(true)}
   };
+  auto result = moustache_render(taxes, substitutions);
+  Serial.println(result);
 ```
-will render
+will render:
 ```
 Well, 6000.0 dollars, after taxes.
 ```
@@ -115,8 +114,10 @@ with variables:
     {"taxed_value", String(10000 - (10000 * 0.4))},
     {"in_ca", String(false)}
   };
+  auto result = moustache_render(taxes, substitutions);
+  Serial.println(result);
 ```
-will render
+will render:
 ```
 And no taxes paid!
 ```
@@ -127,7 +128,9 @@ Collaboration is appreciated and bug reports or feature requests are welcome!
 
 ## Change history
 
-- Oct 2022: Initial version
-- Feb 2023: Changed the const String& value in the moustache variable to String value.
-  This will allow to change the variable without recreating the complete array.
-  This update requires removing the const for the moustache_variable_t.
+- Oct 2022
+  - Initial version
+- Feb 2023
+  - Changed the const String& value in the moustache variable to String value.
+    This will allow to change the variable without recreating the complete array.
+    This update requires removing the const for the moustache_variable_t.
