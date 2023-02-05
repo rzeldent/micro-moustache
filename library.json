@@ -1,6 +1,6 @@
 {
     "name": "micro-moustache",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A micro logic-less text template processor using the moustache syntax. Features include replacing variables, include section and inverted section.",
     "keywords": "moustache, text, text processor, template, logic-less",
     "repository": {

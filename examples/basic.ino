@@ -19,13 +19,17 @@ void setup()
         "And no taxes paid!\n"
         "{{/in_ca}}";
 
-    const moustache_variable_t substitutions[] = {
+    moustache_variable_t substitutions[] = {
         {"name", "Chris"},
         {"value", String(10000)},
         {"taxed_value", String(10000 - (10000 * 0.4))},
         {"in_ca", String(true)}};
 
     auto result = moustache_render(taxes, substitutions);
+    Serial.println(result);
+
+    substitutions[3].value = String(false);
+    result = moustache_render(taxes, substitutions);
     Serial.println(result);
 }
 
